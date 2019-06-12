@@ -563,13 +563,9 @@ papaya.viewer.ScreenSurface.prototype.initBuffers = function (gl, surface) {
         let interval, upperThreshold, lowerThreshold;
         let sparsity = 100;
 
-        if (this.viewer.rangeChangedFlag) {
-            upperThreshold = papayaContainers[0].viewer.screenVolumes[2].screenMax;
-            lowerThreshold = papayaContainers[0].viewer.screenVolumes[2].screenMin;
-        } else {
-            upperThreshold = 0.3;
-            lowerThreshold = 0.1;
-        }
+
+        upperThreshold = papayaContainers[0].viewer.screenVolumes[1].screenMax;
+        lowerThreshold = papayaContainers[0].viewer.screenVolumes[1].screenMin;
 
         //-- Making look up color table
         //let knotPoint = [[0.75, 0, 0, 0], [1, 0.5, 0.5, 0], [1, 0.95, 1, 0], [1, 1, 1, 1]];
@@ -888,7 +884,8 @@ papaya.viewer.ScreenSurface.prototype.drawScene = function (gl) {
     var ctr, xSlice, ySlice, zSlice, hasTranslucent = this.hasTranslucentSurfaces();
 
     // initialize
-    gl.clearColor(0.0, 0.0, 0.0, 1.0);
+    gl.clearColor(this.backgroundColor[0], this.backgroundColor[1], this.backgroundColor[2], 1.0);
+    //gl.clearColor(0.0, 0.0, 0.0, 1.0);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
     gl.viewport(0, 0, gl.viewportWidth, gl.viewportHeight);
