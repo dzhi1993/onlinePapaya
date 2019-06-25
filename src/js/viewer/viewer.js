@@ -1595,7 +1595,7 @@ papaya.viewer.Viewer.prototype.calculateScreenSliceTransforms = function () {
             this.lowerImageTop.screenTransform[1][2] += this.lowerImageTop.screenOffsetY = 0;
         }
     } else {
-        //this.viewerDim = this.canvas.height;
+        //this.viewerDim = this.canvas.height / 1.5;
 
         if (this.container.hasSurface()) {
             this.viewerDim = this.canvas.height / 1.5;
